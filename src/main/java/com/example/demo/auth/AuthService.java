@@ -20,11 +20,9 @@ public class AuthService {
 
     @Transactional(readOnly = true)
     public LoginResponse login(LoginRequest request) {
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                request.getUsername(), request.getPassword()
+        Authentication auth = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
         );
-
-        Authentication auth = authenticationManager.authenticate(authenticationToken);
 
         return LoginResponse.builder()
                 .accessToken(jwtTokenProvider.createToken(auth))
