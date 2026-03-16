@@ -93,7 +93,7 @@ import org.springframework.context.annotation.Configuration;
 				+ "- CURSOR_MOVE 메시지는 DB에 저장되지 않으며, 같은 파일을 편집하는 다른 사용자들에게만 실시간으로 전달됩니다."
 	),
 	servers = {
-		@Server(url = "https:/ide.kthowns.cloud", description = "배포 서버"),
+		@Server(url = "https://ide.kthowns.cloud", description = "배포 서버"),
 		@Server(url = "http://localhost:8080", description = "로컬 개발 서버")
 	}
 )
