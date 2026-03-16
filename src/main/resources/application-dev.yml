@@ -1,0 +1,32 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 3000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/grwebide?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: grwebide
+    password: grwebide
+  jpa:
+    show-sql: true        # SQL 쿼리 출력
+    properties:
+      hibernate:
+        format_sql: true  # 보기 좋게 포맷
+        use_sql_comments: true  # 쿼리 주석 표시
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8080
+
+jwt:
+  secret: 5a3a9624b7030cb023670d89b94f7d592a123f4070f272dea83b3b7ad17e6e7ec35e39fcce5f5682c44c7356d6d3b5548e393e5d698ec73ba9f6b6343275bf91
+  token-validity-in-seconds: 860000

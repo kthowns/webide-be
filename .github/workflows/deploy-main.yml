@@ -26,7 +26,6 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
       - name: Grant execute permission for gradlew
-        working-directory: ${{ env.BUILD_DIR }}
         run: chmod +x gradlew
 
       - name: Set up Docker Build
@@ -41,7 +40,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: demo
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:latest
 
@@ -51,9 +49,8 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "demo/docker-compose.yml"
+          source: "docker-compose.yml"
           target: "${{ secrets.WORK_DIRECTORY }}"
-          strip_components: 1
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
