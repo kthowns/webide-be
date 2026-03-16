@@ -45,3 +45,13 @@ execution:
   docker:
     python-image: python:3.11-alpine
     java-image: eclipse-temurin:17-jdk
+
+springdoc:
+  api-docs:
+    path: /api/api-spec
+    enabled: true
+  swagger-ui:
+    path: /api/my-docs
+    enabled: true
+  override-with-generic-response: false
+  use-fqn: true
